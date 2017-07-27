@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './todolist';
+import AddTodoItem from './addtodoitem';
 export default class TodoBox extends React.Component {
   constructor(props) {
     super(props)
@@ -22,6 +23,14 @@ export default class TodoBox extends React.Component {
     }
     this.handleToggleComplete = this.handleToggleComplete.bind(this);
     this.handleTaskDelete = this.handleTaskDelete.bind(this);
+    this.handleAddTodoItem = this.handleAddTodoItem.bind(this);
+  }
+  generateGUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : (r & 0x3 | 0x8)
+      return v.toString(16)
+    })
   }
   handleToggleComplete(taskId) {
     let data = this.state.data;
@@ -37,11 +46,22 @@ export default class TodoBox extends React.Component {
     data = data.filter(task => task.id !== taskId)
     this.setState({data})
   }
+  handleAddTodoItem(task){
+    let newItem={
+      id:this.generateGUID(),
+      task,
+      complete:"false"
+    }
+    let data=this.state.data
+    data=data.concat([newItem])
+    this.setState({data})
+  }
   render() {
     return (
-      <div>
-        <h1>React Todo</h1>
+      <div className="well">
+        <h1 className="text-center">React TodoList</h1>
         <TodoList data={this.state.data} toggleComplete={this.handleToggleComplete} deleteTask={this.handleTaskDelete}/>
+        <AddTodoItem saveNewItem={this.handleAddTodoItem}/>
       </div>
     )
   }

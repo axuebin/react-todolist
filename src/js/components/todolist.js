@@ -3,7 +3,7 @@ import TodoItem from './todoitem';
 export default class TodoList extends React.Component{
   constructor(props) {
     super(props);
-  };
+  }
   render(){
     var taskList=this.props.data.map(listItem=>
       <TodoItem taskId={listItem.id}
@@ -14,7 +14,7 @@ export default class TodoList extends React.Component{
                 deleteTask={this.props.deleteTask}/>
     )
     return(
-      <ul>
+      <ul className="list-group">
         {taskList}
       </ul>
     )
