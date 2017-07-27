@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './todolist';
 import AddTodoItem from './addtodoitem';
+import {Button,Icon,Row,Col} from 'antd';
 export default class TodoBox extends React.Component {
   constructor(props) {
     super(props)
@@ -62,11 +63,21 @@ export default class TodoBox extends React.Component {
   }
   render() {
     return (
-      <div className="well">
-        <h1 className="text-center">React TodoList</h1>
-        <TodoList data={this.state.data} toggleComplete={this.handleToggleComplete} deleteTask={this.handleTaskDelete}/>
-        <AddTodoItem saveNewItem={this.handleAddTodoItem}/>
-      </div>
+      <div>
+        <div className="well">
+          <h1 className="text-center">React TodoList</h1>
+          <TodoList data={this.state.data} toggleComplete={this.handleToggleComplete} deleteTask={this.handleTaskDelete}/>
+          <AddTodoItem saveNewItem={this.handleAddTodoItem}/>
+        </div>
+        <Row>
+          <Col span={12}>
+          </Col>
+          <Col span={12}>
+            <Button className="pull-left"><Icon type="user" />   <a href="http://axuebin.com">薛彬</a></Button>
+            <Button className="pull-right"><Icon type="github" />   <a href="https://github.com/axuebin">axuebin</a></Button>
+          </Col>
+        </Row>
+        </div>
     )
   }
 }
