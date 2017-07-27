@@ -18,6 +18,10 @@ export default class TodoBox extends React.Component {
           "id": "3",
           "task": "Hello React",
           "complete": "true"
+        }, {
+          "id": "4",
+          "task": "找工作",
+          "complete": "false"
         }
       ]
     }

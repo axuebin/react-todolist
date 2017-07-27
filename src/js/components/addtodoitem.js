@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Row, Col, Form, Input, Button} from 'antd';
+import {Row, Col, Form, Input, Button,notification } from 'antd';
 export default class AddTodoItem extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +11,9 @@ export default class AddTodoItem extends React.Component {
     let element = ReactDOM.findDOMNode(this.refs.newItem)
     let task = element.value
     if (!task) {
-      alert("不得为空")
+      notification.open({
+        description: 'Todo内容不得为空！',
+    });
     } else {
       this.props.saveNewItem(task)
       element.value = ""
